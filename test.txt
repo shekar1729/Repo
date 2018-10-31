@@ -1,0 +1,10 @@
+ Volume in drive C is Local Disc
+ Volume Serial Number is 0C3C-1C4A
+
+ Directory of C:\Users\bs42534\Desktop\MyGitProj
+
+31-10-2018  12:50    <DIR>          .
+31-10-2018  12:50    <DIR>          ..
+31-10-2018  12:50                 0 test.txt
+               1 File(s)              0 bytes
+               2 Dir(s)  56,342,081,536 bytes free

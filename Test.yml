@@ -1,0 +1,24 @@
+- hosts: all
+  gather_facts: yes
+  connection : winrm
+  become_method: runas
+  tasks:
+   - name: Create temp directory
+     win_file:
+        path: D:\ecs-gis-deployments
+        state: directory
+                
+   - name: Download Arcgis server from S3
+     win_shell: aws s3 cp s3://vz-app-gts-ejgv-non-prod-ejgv-ecs-test-s3bucket//GIS//ArcGISServer.zip D:\ecs-gis-deployments\ArcGISServer.zip --sse aws:kms --sse-kms-key-id 42d8a6af-a6ae-4c1c-b256-0b0ef6e8567c
+     register: dbstatus_2
+   - debug: var=dbstatus_2
+
+   - name: Unzip ArcGISserver
+     win_shell: C:\util\UNIX\unzip.exe -o D:\ecs-gis-deployments\ArcGISServer.zip -d D:ecs-gis-deployments
+     register: dbstatus_2
+   - debug: var=dbstatus_2 
+
+   - name: ArcGIS server Installation
+     win_shell: D:\ecs-gis-deployments\ArcGISServer\setup.exe /qb USER_NAME=arcgislocal PASSWORD=arcgislocal
+     register: dbstatus_2
+   - debug: var=dbstatus_2
